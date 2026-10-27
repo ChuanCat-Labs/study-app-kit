@@ -77,4 +77,4 @@ node tools/audit-public.mjs --report output/public-audit.json
 
 真实课程在独立项目中维护，模板保持空课程。`production.json`记录个性化、资料优先级和制作选择；`app-config.json`记录应用名称、图标和安装身份。字段见[配置说明](docs/configuration.md)与[课程接入说明](docs/course-contract.md)。
 
-本地资料和签名默认排除出发布清单。仓库分发前还要进行人工隐私检查并确定代码与默认图标的使用许可，见[隐私与复用](docs/privacy-and-reuse.md)和`DISTRIBUTION.json`。当前以私有模板仓库维护，公开分发许可待确定。可通过GitHub的“Use this template”创建独立项目，或下载源码后按上述步骤制作。
+本地资料和签名默认排除出发布清单。每次分发前检查实际文件集，见[隐私与复用](docs/privacy-and-reuse.md)和`DISTRIBUTION.json`。当前为公开模板仓库，可通过GitHub的“Use this template”创建独立项目，或下载源码后按上述步骤制作。代码与默认图标的复用许可尚未指定，其状态分别记录在`DISTRIBUTION.json`中。

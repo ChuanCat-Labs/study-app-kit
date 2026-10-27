@@ -1,11 +1,12 @@
 {
-  "stage": "private-template",
+  "stage": "public-template",
   "remoteCreated": true,
   "codeLicense": "pending-selection-and-origin-review",
-  "defaultIconReuseTerms": "pending-public-distribution-confirmation",
-  "repositoryVisibility": "private",
+  "defaultIconReuseTerms": "license-not-specified",
+  "repositoryVisibility": "public",
   "thirdPartyLicenses": "keep-original-notices",
   "courseMaterials": "excluded-from-template",
   "signingKeysAndRecords": "excluded",
-  "isTemplate": true
+  "isTemplate": true,
+  "defaultIconPublicDisplayAuthorized": true
 }
