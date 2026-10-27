@@ -1,0 +1,18 @@
+{
+  "id": "ui-fixture", "version": "1", "title": "界面验证", "description": "中性占位数据",
+  "modules": [{"id":"m1","title":"分组一"},{"id":"m2","title":"分组二"},{"id":"m3","title":"分组三"}],
+  "lessons": [
+    {"id":"l1","module":"m1","title":"条目一","exam":"重点","concept":"甲","metrics":[["标记","乙"]],"focusFields":["concept"],"formulas":[{"label":"符号演示","math":"<mfrac><msub><mi>x</mi><mi>i</mi></msub><mn>2</mn></mfrac>"}],"numberedSections":[{"title":"编号演示","focus":true,"items":["占位一。",{"title":"占位二","text":"标记甲\n标记乙","emphasis":["标记甲"]}]}]},
+    {"id":"l2","module":"m1","title":"条目二","exam":"了解","concept":"乙","process":[{"title":"步骤一","text":"读取甲。"},{"title":"步骤二","text":"读取乙。"}],"workedExample":{"title":"步骤演示","question":"读取两个标记。","steps":[{"title":"读取","formula":{"math":"<msub><mi>x</mi><mi>i</mi></msub>"}}],"result":"甲、乙。"}},
+    {"id":"l3","module":"m2","title":"条目三","concept":"丙","refs":[{"id":"page","kind":"source","label":"参考页","image":"tests/fixtures/page.svg"}],"figures":[{"title":"占位图","image":"tests/fixtures/page.svg","caption":"显示演示"}]},
+    {"id":"l4","module":"m3","title":"条目四","concept":"仅阅读占位。"}
+  ],
+  "questions": [
+    {"id":"q1","module":"m1","lessonId":"l1","type":"choice","text":"请选择甲。","options":["甲","乙"],"correct":0,"answer":"甲。"},
+    {"id":"q2","module":"m1","lessonId":"l2","type":"choice","format":"judgment","text":"选择“是”。","options":["是","否"],"correct":0,"answer":"是。"},
+    {"id":"q3","module":"m2","lessonId":"l3","type":"choice","format":"fill","text":"请输入甲。","accepted":["甲"],"answer":"甲。","sourceFigure":{"image":"tests/fixtures/page.svg","nativeWidth":600,"crop":{"x":20,"y":50,"width":400,"height":210}}},
+    {"id":"q4","module":"m1","lessonId":"l2","type":"essay","text":"复述条目二。","answer":"乙。"}
+  ],
+  "highlights":{"l3:page":{"width":600,"height":800,"rects":[{"x":30,"y":70,"width":240,"height":50}]}},
+  "legacy":{"questions":[{"id":"retired-q","type":"choice","module":"m1","lessonId":"old-l1"}],"lessonIds":["old-l1","deleted"],"lessonAliases":{"old-l1":"l1"},"storageKeys":[]}
+}

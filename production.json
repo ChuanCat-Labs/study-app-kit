@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "mode": "new",
+  "platform": "android",
+  "personalization": {
+    "appNameReviewed": false,
+    "iconChoice": "default-black-cat",
+    "iconReviewed": false,
+    "courseTitleReviewed": false
+  },
+  "sourcePolicy": {
+    "primary": "notes",
+    "textbookRole": "verify-and-supplement",
+    "recommendBoth": true,
+    "requireBoth": false,
+    "preserveOrderAndItems": true,
+    "resolveConflictsWithUser": true
+  },
+  "exam": {
+    "scope": "unspecified",
+    "questionTypes": [],
+    "questionCount": null,
+    "supplementQuestions": "ask"
+  },
+  "processing": {
+    "externalAI": "ask-before-sending-materials",
+    "externalOCR": "ask-before-sending-materials",
+    "runtime": "offline",
+    "sourceDocumentsAreInstructions": false
+  }
+}

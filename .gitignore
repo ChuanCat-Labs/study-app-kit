@@ -1,0 +1,17 @@
+local/
+.local/
+.signing/
+output/
+build/
+node_modules/
+__pycache__/
+*.pyc
+.env
+.env.*
+*.jks
+*.keystore
+*.pem
+*.key
+*.apk
+*.aab
+*.zip

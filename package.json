@@ -1,0 +1,20 @@
+{
+  "name": "study-app-kit",
+  "version": "0.1.1",
+  "private": true,
+  "description": "Local-first study app framework and source-grounded production workflow",
+  "scripts": {
+    "test": "node --test tests/core.test.cjs tests/tooling.test.mjs",
+    "test:browser": "node tests/browser.test.cjs",
+    "preview": "node tools/serve.mjs",
+    "prepare:course": "node tools/prepare-course.mjs",
+    "create": "node tools/create-project.mjs",
+    "intake": "node tools/intake.mjs",
+    "check": "node tools/check-project.mjs",
+    "doctor": "node tools/doctor.mjs",
+    "audit:public": "node tools/audit-public.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1"
+  }
+}

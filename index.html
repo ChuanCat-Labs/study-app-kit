@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#203b57" />
+  <title>复习助手 · MEMORY / LAB</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./mobile.css" />
+  <link rel="stylesheet" href="./learning.css" />
+  <link rel="stylesheet" href="./classroom.css" />
+  <script src="./course-data.js" defer></script>
+  <script src="./course-schema.js" defer></script>
+  <script src="./records.js" defer></script>
+  <script src="./presentation.js" defer></script>
+  <script src="./app.js" defer></script>
+</head>
+<body>
+<div class="workspace">
+  <header class="workspace-header">
+    <div><span class="wordmark">MEMORY / LAB</span><span class="edition">通用框架 V5</span></div>
+    <span class="workspace-hint">离线复习框架</span>
+  </header>
+  <main class="preview">
+    <nav class="app-tabs" aria-label="应用页面">
+      <button class="app-tab selected" data-page="home" type="button">01　知识点</button>
+      <button class="app-tab" data-page="quiz" type="button">02　背诵</button>
+      <button class="app-tab" data-page="stats" type="button">03　统计</button>
+    </nav>
+    <div class="device">
+      <div class="topline"><span id="course-title">复习助手</span><span>● 离线学习</span></div>
+      <div class="page-content">
+        <section data-screen="home" id="home-screen">
+          <div class="page-title"><div><span class="eyebrow">01 / PREPARE</span><h1>选择知识点<span class="dot">.</span></h1><p>选择本轮准备学习或练习的模块。</p></div><div class="emblem">▤</div></div>
+          <div class="course-caption" id="course-description"></div>
+          <div class="summary"><div><small>已选模块</small><strong id="selected-modules">—</strong></div><div><small>本轮可练习</small><strong id="available-count">—</strong></div></div>
+          <p class="course-notice" id="course-notice"></p><p id="course-error" class="backup-status" role="alert" hidden></p>
+          <div class="search-field"><label for="knowledge-search">查知识点</label><input id="knowledge-search" type="search" placeholder="搜索知识点、条目或关键词…" autocomplete="off" /></div>
+          <div class="filter-row" role="group" aria-label="知识点筛选"><button type="button" class="filter selected" data-filter="all">全部</button><button type="button" class="filter" data-filter="focus">课堂重点</button><button type="button" class="filter" data-filter="pending">待确认</button><button type="button" class="filter" data-filter="saved">收藏／疑问</button></div>
+          <div class="resume-draft" id="resume-draft" hidden><span>有尚未提交的练习</span><button type="button" id="resume-session">继续答题 →</button></div>
+          <div class="overline">MODULE SELECTION</div>
+          <div id="module-list"></div>
+          <div class="home-actions">
+            <button id="start-learning" class="button primary" type="button">学习知识点　↗</button>
+            <button id="start-quiz" class="button secondary" type="button">直接开始练习　→</button>
+          </div>
+          <p class="helper">点模块内的知识点可直接阅读。阅读与作答分别记录。</p>
+        </section>
+        <section data-screen="learn" id="learn-screen" hidden>
+          <button class="learning-back" id="learning-back" type="button">‹　返回知识点列表</button>
+          <div class="progress-meta learning-progress-meta"><span id="learning-position">KNOWLEDGE 00 / 00</span><span id="learning-progress-label">已学习 0 / 00</span></div>
+          <div class="track"><div id="learning-progress-bar"></div></div>
+          <div class="page-title"><div><span class="eyebrow">02 / LEARNING</span><h1>学习知识点<span class="dot">.</span></h1><p id="learning-subtitle"></p></div><div class="emblem">▧</div></div>
+          <article class="card lesson-card">
+            <div class="lesson-top"><span class="lesson-index" id="lesson-index">01.</span><span class="learning-state" id="lesson-state">未学习</span></div>
+            <h2 class="lesson-title" id="lesson-title"></h2>
+            <div class="content-labels" id="lesson-labels"></div>
+            <hr class="lesson-rule" />
+            <section class="lesson-section"><h3>01 / 基本概念</h3><p id="lesson-concept"></p></section>
+            <section class="lesson-section"><h3>02 / 核心结论</h3><div class="lesson-metrics" id="lesson-metrics"></div></section>
+            <section class="lesson-section"><h3>03 / 原理解析</h3><p id="lesson-explanation"></p><div class="lesson-formula" id="lesson-formula" hidden></div></section>
+            <section id="lesson-process" class="process-section" hidden></section>
+            <section id="lesson-outline" class="outline-section" hidden></section>
+            <section id="lesson-prevention" class="prevention-section" hidden></section>
+            <section id="lesson-diagrams" class="diagram-section" hidden></section>
+            <section id="lesson-example" class="example-section" hidden></section>
+            <figure class="lesson-figure" id="lesson-figure" hidden><button type="button" id="open-lesson-image" aria-label="放大插图"><img id="lesson-image" alt="" /></button><figcaption id="lesson-image-caption"></figcaption></figure>
+            <section class="lesson-warning"><h3>◇　易混淆点</h3><p id="lesson-warning"></p></section>
+            <details id="lesson-calibration" class="calibration-note" hidden><summary>简短校注（选读）</summary><p id="calibration-text"></p></details>
+            <details class="source-section source-details"><summary>资料与出处</summary><p class="source-helper">点开原页可查看出处，黄色标记为相关内容。荧光标记可开关。</p><div id="lesson-sources" class="source-list"></div><div id="source-preview"></div></details>
+            <div class="review-actions"><button id="bookmark-point" class="button secondary" type="button">☆ 收藏</button><button id="flag-point" class="button secondary" type="button">标记疑问</button></div>
+            <div id="review-editor" class="review-editor" hidden><label for="review-text">我的核对记录</label><textarea id="review-text" rows="3" maxlength="2000" placeholder="例如：这一项老师强调的是……，或公式疑似有误……"></textarea><p id="review-save-state" role="status">输入后保存在本机。</p></div>
+          </article>
+          <div class="learning-actions">
+            <button id="finish-learning-point" class="button primary" type="button">完成学习 · 下一知识点　→</button>
+            <button id="practice-learning-point" class="button secondary" type="button">进入对应练习　↗</button>
+            <button id="previous-learning-point" class="button tertiary" type="button">←　上一个知识点</button>
+          </div>
+          <p class="helper">已学习不等于已答对，只有实际作答才参与正确率。</p>
+        </section>
+        <section data-screen="quiz" id="quiz-screen" hidden>
+          <div class="page-title"><div><span class="eyebrow">02 / RECALL</span><h1>背诵练习<span class="dot">.</span></h1><p>客观题与大题，同一次练习累计计分。</p></div><div class="emblem">✳</div></div>
+          <div class="mode-tabs" role="tablist" aria-label="题型">
+            <button class="mode-tab selected" type="button" data-mode="choice">◉　客观题</button>
+            <button class="mode-tab" type="button" data-mode="essay">▤　大题</button>
+          </div>
+          <div class="progress-meta"><span id="mode-hint">选择题 · 自动批改</span><span id="progress-label">0 / 0 已完成</span></div>
+          <div class="track"><div id="progress-bar"></div></div>
+          <div id="question-card" class="card question-card">
+            <div class="question-top"><span class="question-number" id="question-number">01.</span><span class="tag" id="question-module"></span></div>
+            <h2 class="question-text" id="question-text"></h2>
+            <p class="question-description" id="question-description">请选择正确答案</p>
+            <div id="choice-options"></div>
+            <div id="fill-block" class="fill-block" hidden><label for="fill-answer">填写答案</label><input id="fill-answer" type="text" maxlength="100" autocomplete="off" placeholder="在这里填写空缺内容" /><button id="submit-fill" class="button secondary" type="button">确认答案</button></div>
+            <div id="essay-block" hidden>
+              <button type="button" class="button secondary" id="reveal-answer">查看参考答案　↓</button>
+              <div id="essay-reference" class="answer-reference" hidden></div>
+              <div id="self-rating" class="rating-row" hidden>
+                <button id="self-incorrect" type="button" class="rating incorrect">未答对</button>
+                <button id="self-correct" type="button" class="rating correct">答对了</button>
+              </div>
+            </div>
+            <p class="result-message" id="answer-result" aria-live="polite"></p>
+            <button type="button" id="question-source" class="text-button">查看知识点与出处 →</button>
+          </div>
+          <div class="action-row">
+            <button type="button" id="next-question" class="button secondary" hidden>下一题　→</button>
+            <button type="button" id="finish-session" class="button primary">结束并记录本轮　↗</button>
+          </div>
+          <p class="helper" id="quiz-helper">未作答的题目不会计入正确率。</p>
+        </section>
+        <section data-screen="stats" id="stats-screen" hidden>
+          <div class="page-title"><div><span class="eyebrow">03 / ANALYTICS</span><h1>学习统计<span class="dot">.</span></h1><p>每轮正确率 · 累计表现 · 未复习模块</p></div><div class="emblem">▥</div></div>
+          <div class="card stat-card">
+            <div class="card-header"><h2>最近七次练习正确率</h2><span id="data-label">本地真实记录</span></div>
+            <div id="last-seven-chart" class="chart" aria-label="最近七次练习正确率"></div>
+            <div id="chart-labels" class="chart-labels"></div>
+          </div>
+          <div class="summary total-summary"><div><small class="eyebrow">TOTAL ACCURACY</small><strong id="total-accuracy">—</strong></div><div class="summary-detail" id="total-detail">累计答对 0 题<br>累计练习 0 题</div></div>
+          <div class="card-header recommendations-header"><h2>推荐复习模块</h2><span>正确率 + 未复习率</span></div>
+          <div id="recommendation-list" class="card recommendations"></div>
+          <div class="review-summary" id="review-summary"></div>
+          <button id="export-review" class="button secondary full-width" type="button">导出核对记录与学习备份</button>
+          <label class="button secondary import-button">导入本课程备份<input type="file" id="import-backup" accept="application/json,.json" /></label>
+          <p id="backup-status" class="backup-status" role="status"></p>
+          <button id="reset-records" class="button reset" type="button">重置学习记录</button>
+          <div id="reset-confirmation" class="confirm" hidden>
+            <p>确定清空练习历史和已学习标记？重置后无法撤销。</p>
+            <div class="confirm-buttons"><button id="cancel-reset" type="button" class="button secondary">取消</button><button id="confirm-reset" type="button" class="button danger">确认重置</button></div>
+          </div>
+          <p class="helper" id="storage-notice">学习、练习与核对记录保存在本机。卸载前请导出备份。</p>
+          <details class="course-about"><summary>内容版本与使用说明</summary><p id="course-about"></p><p>自测题用于回顾，不作为考试范围承诺。考试范围提示见各知识点；随课程打包的资料可离线查看。</p></details>
+        </section>
+      </div>
+      <footer class="device-footer"><span>MEMORY / LAB</span><span id="section-footer">KNOWLEDGE / 01</span></footer>
+    </div>
+    <div class="palette"><i style="background:#203b57"></i><i style="background:#547fa7"></i><i style="background:#4c9187"></i><i style="background:#f7f7f2"></i><i style="background:#b78e58"></i><span>深海蓝 · 雾青 · 暖纸白</span></div>
+  </main>
+</div>
+<dialog id="source-viewer" aria-labelledby="source-title"><div class="source-toolbar"><h2 id="source-title">原页核对</h2><button type="button" id="source-close" aria-label="关闭原页">关闭 ×</button></div><div class="source-page-controls"><button type="button" id="source-previous">← 上一页</button><span id="source-position"></span><button type="button" id="source-next">下一页 →</button></div><div class="source-tools"><p class="source-zoom-hint">双指缩放；点图片切换原尺寸。</p><button type="button" id="toggle-highlights" hidden>隐藏荧光标记</button></div><div id="source-scroll" class="source-scroll"><div id="source-sheet" class="source-sheet"><img id="source-image" alt="" /><svg id="source-highlights" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"></svg></div></div></dialog>
+<div id="toast" class="toast" role="status" hidden></div>
+</body>
+</html>

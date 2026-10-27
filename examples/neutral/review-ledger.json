@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "exampleOnly": true,
+  "items": [
+    {"id":"review-l1","lessonId":"l1","sourceIds":[],"sourceLocation":"笔记01；参考A","retainedItems":["甲","占位一","占位二及两种标记","x_i/2"],"questionIds":["q1"],"status":"retained","question":"","reviewNote":"虚构示例对照；编号两项与分式均保留。"},
+    {"id":"review-l2","lessonId":"l2","sourceIds":[],"sourceLocation":"笔记02；参考B","retainedItems":["乙","读取甲","读取乙","步骤演示"],"questionIds":["q2","q4"],"status":"retained","question":"","reviewNote":"示例作者已指定了解与简单回顾。"},
+    {"id":"review-l3","lessonId":"l3","sourceIds":[],"sourceLocation":"笔记03；参考B；占位图第一行","retainedItems":["丙","原页及荧光定位"],"questionIds":["q3"],"status":"retained","question":"","reviewNote":"仅用于展示来源图与填空交互。"},
+    {"id":"review-l4","lessonId":"l4","sourceIds":[],"sourceLocation":"笔记04","retainedItems":["仅阅读占位"],"questionIds":[],"status":"retained","question":"","reviewNote":"无题目，练习入口应禁用。"}
+  ]
+}
